@@ -1,12 +1,10 @@
 #include "boyermoore.hpp"
 #include "iostream"
-#include "string.h"
 
-BoyerMoore::BoyerMoore(const std::string p)
-{       
-    pat = std::span<const char>(p.c_str(),strlen(p.c_str()));    
-    m=pat.size();
-
+BoyerMoore::BoyerMoore(std::span<const char> p)
+{    
+    m = p.size();
+    pat = p;    
     make_d0();
     make_d1();    
 };

@@ -52,7 +52,7 @@ size_t word_mode_bm(const std::string filepathname, const std::string pattern)
   size_t pos = 0;
   size_t count = 0;
     
-  BoyerMoore bm(pattern);
+  BoyerMoore bm{std::span<const char>(pattern.c_str(),pattern.size())};
 
   while (true)
   {

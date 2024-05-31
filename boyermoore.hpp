@@ -10,8 +10,8 @@ class BoyerMoore
 public:
     int d1[LENGTH_OF_ALPHABET];
     int d0[LENGTH_OF_ALPHABET];
-    BoyerMoore(const std::string p);
-    size_t search(std::span<const char> t, size_t pos);
+    BoyerMoore(std::span<const char> p);
+    size_t search(std::span<const char> t,size_t pos);
     void make_d0();
     void make_d1();
     void ufast();
