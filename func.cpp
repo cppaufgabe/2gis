@@ -4,6 +4,9 @@
 #include <bit>
 #include "filemmap.hpp"
 #include "func.hpp"
+#include "boyermoore.hpp"
+#include <span>
+#include "string.h"
 
 void help_func()
 {
@@ -40,6 +43,32 @@ size_t word_mode(const std::string filepathname, const std::string pattern)
 
   return count;
 }
+
+size_t word_mode_bm(const std::string filepathname, const std::string pattern)
+{
+
+  MappedFile mfile(filepathname);
+  //std::string_view sv(mfile.data().data(), mfile.data().size());
+  size_t pos = 0;
+  size_t count = 0;
+    
+  BoyerMoore bm(pattern);
+
+  while (true)
+  {
+    pos = bm.search(mfile.data(), pos);
+    if (pos < mfile.data().size())
+    {
+      pos++;
+      count++;
+    }
+    else
+      break;
+  }
+
+  return count;
+}
+
 
 uint32_t checksum_mode(const std::string filepathname)
 {

@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
 
   if (!filename.empty() && !pattern.empty() && mode == "words")
   {
-    std::cout << word_mode(filename, pattern) << std::endl;
+    std::cout << word_mode_bm(filename, pattern) << std::endl;
     return 0;
   }
   if (!filename.empty() && mode == "checksum")
